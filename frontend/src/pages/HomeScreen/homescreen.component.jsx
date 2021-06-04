@@ -24,7 +24,7 @@ useEffect(() => {
       :
       error?(<MessageBox variant="danger">{error}</MessageBox>)
       :
-      (<div className="row center">
+      (<div className="row center bottom">
         {
           products.map(product => (
             <Product key={product._id} product={product}></Product>

@@ -117,6 +117,10 @@ button.small {
   align-items: center;
 }
 
+.row.bottom {
+  align-items: flex-end;
+}
+
 .row.center{
   justify-content: center;
 }
