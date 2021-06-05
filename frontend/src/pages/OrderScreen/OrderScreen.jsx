@@ -220,6 +220,8 @@ return loading?
                         )}
                         {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
                           <li>
+                          {loadingDeliver && <LoadingBox></LoadingBox>}
+                          {errorDeliver && <MessageBox variant="danger">{errorDeliver}</MessageBox>}
                             <button
                             type="buttton"
                             className="primary block"
