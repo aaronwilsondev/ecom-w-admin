@@ -19,6 +19,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import AdminRoute from "./components/AdminRoute";
 import ProductListScreen from "./pages/ProductListScreen/ProductListScreen";
 import ProductEditScreen from "./pages/ProductEditScreen/ProductEditScreen";
+import OrderListScreen from "./pages/OrderListScreen/OrderListScreen";
 
 function App() {
 
@@ -109,6 +110,10 @@ function App() {
        <AdminRoute
        path="/productlist"
        component={ProductListScreen}>
+       </AdminRoute>
+       <AdminRoute
+       path="/orderlist"
+       component={OrderListScreen}>
        </AdminRoute>
       <Route path="/" component={HomeScreen} exact></Route>
       </main>
