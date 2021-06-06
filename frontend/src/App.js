@@ -22,6 +22,7 @@ import ProductEditScreen from "./pages/ProductEditScreen/ProductEditScreen";
 import OrderListScreen from "./pages/OrderListScreen/OrderListScreen";
 import UserListScreen from "./pages/UserListScreen/UserListScreen";
 import UserEditScreen from "./pages/UserEditScreen/UserEditScreen";
+import AboutScreen from "./pages/AboutScreen/AboutScreen";
 
 function App() {
 
@@ -35,12 +36,14 @@ function App() {
      dispatch(signout());
   }
 
+  const currentYear= new Date().getFullYear();
+
   return (
     <BrowserRouter>
     <div className="grid-container">
       <header className="row">
         <div>
-          <Link className="brand" to="/" alt="home">ELLA CREATES</Link>
+          <Link className="brand" to="/" alt="home">MC</Link>
         </div>
         <div>
           <Link to="/cart">Cart
@@ -49,6 +52,9 @@ function App() {
               <span className="badge">{cartItems.length}</span>
             )
           }
+          </Link>
+          <Link to="/about">
+             About
           </Link>
           {
             userInfo ? (
@@ -94,8 +100,9 @@ function App() {
           }
         </div>
       </header>
-      <main>
+      <main className="main">
       <Route path="/cart/:id?" component={CartScreen} exact></Route>
+      <Route path="/about" component={AboutScreen}></Route>
       <Route path="/product/:id" component={ProductScreen} exact></Route>
       <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
       <Route path="/signin" component={SignInScreen}></Route>
@@ -127,8 +134,22 @@ function App() {
        </AdminRoute>
       <Route path="/" component={HomeScreen} exact></Route>
       </main>
-      <footer className="row center">
-         All right reserved
+      <footer className="row center column">
+         <div className="icons">
+           <Link className="f-icon">
+             <i className="fa-2x social-icon fab fa-twitter"></i>
+           </Link>
+           <Link className="f-icon">
+             <i className=" fa-2x social-icon fab fa-facebook"></i>
+           </Link>
+           <Link className="f-icon">
+             <i className="fa-2x social-icon fab fa-instagram"></i>
+           </Link>
+           <Link className="f-icon">
+             <i className="fa-2x social-icon fas fa-envelope"></i>
+           </Link>
+         </div>
+         <p className="copyright">© copyright {currentYear} Emsi's Fluid Acrylics</p>
       </footer>
     </div>
     </BrowserRouter>

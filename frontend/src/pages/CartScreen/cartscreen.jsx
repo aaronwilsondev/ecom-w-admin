@@ -84,7 +84,7 @@ const checkoutHandler = () => {
          }
          </div>
          <div className="col-1">
-           <div className="card card-body">
+           <div className="cart-panel card card-body">
               <ul>
                   <li>
                       <h2>

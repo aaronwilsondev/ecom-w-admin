@@ -3,7 +3,8 @@ import Product from "../../components/product/product.component";
 import LoadingBox from '../../components/loadingbox/loadingbox';
 import MessageBox from '../../components/messagebox/messagebox';
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../../redux/actions/productActions";;
+import { listProducts } from "../../redux/actions/productActions";import HeroSection from '../../components/HeroSection/HeroSection';
+;
 
 export default function HomeScreen() {
 
@@ -19,12 +20,13 @@ useEffect(() => {
 }, [dispatch])
 
     return (
-      <div>
+      <div className="homescreen">
+      <HeroSection/>
       {loading? (<LoadingBox></LoadingBox>)
       :
       error?(<MessageBox variant="danger">{error}</MessageBox>)
       :
-      (<div className="row center bottom">
+      (<div className="shop-page row center bottom">
         {
           products.map(product => (
             <Product key={product._id} product={product}></Product>
