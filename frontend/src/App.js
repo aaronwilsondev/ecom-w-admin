@@ -21,6 +21,7 @@ import ProductListScreen from "./pages/ProductListScreen/ProductListScreen";
 import ProductEditScreen from "./pages/ProductEditScreen/ProductEditScreen";
 import OrderListScreen from "./pages/OrderListScreen/OrderListScreen";
 import UserListScreen from "./pages/UserListScreen/UserListScreen";
+import UserEditScreen from "./pages/UserEditScreen/UserEditScreen";
 
 function App() {
 
@@ -119,6 +120,10 @@ function App() {
        <AdminRoute
        path="/userlist"
        component={UserListScreen}>
+       </AdminRoute>
+       <AdminRoute
+       path="/user/:id/edit"
+       component={UserEditScreen}>
        </AdminRoute>
       <Route path="/" component={HomeScreen} exact></Route>
       </main>
