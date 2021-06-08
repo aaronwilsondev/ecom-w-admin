@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './index.css';
 
 import {BrowserRouter, Link, Route} from "react-router-dom";
@@ -23,18 +23,35 @@ import OrderListScreen from "./pages/OrderListScreen/OrderListScreen";
 import UserListScreen from "./pages/UserListScreen/UserListScreen";
 import UserEditScreen from "./pages/UserEditScreen/UserEditScreen";
 import AboutScreen from "./pages/AboutScreen/AboutScreen";
+import SearchBox from "./components/SearchBox/SearchBox";
+import SearchScreen from "./pages/SearchScreen/SearchScreen";
+import { listProductsCategories } from "./redux/actions/productActions";
+import MessageBox from "./components/messagebox/messagebox";
+import LoadingBox from "./components/loadingbox/loadingbox";
 
 function App() {
 
   const cart = useSelector((state) => state.cart);
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const {cartItems} = cart;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const dispatch = useDispatch();
 
+  const productCategoryList = useSelector((state) => state.productCategoryList);
+  const {
+      loading: loadingCategory, 
+      error: errorCategory, 
+      categories
+  } = productCategoryList;
+
   const signoutHandler = () => {
      dispatch(signout());
-  }
+  };
+
+  useEffect(() => {
+    dispatch(listProductsCategories())
+  }, [dispatch]);
 
   const currentYear= new Date().getFullYear();
 
@@ -43,7 +60,20 @@ function App() {
     <div className="grid-container">
       <header className="row">
         <div>
+        <button
+        type="button"
+        className="open-sidebar"
+        onClick={() => setSidebarIsOpen(true)}
+        >
+          <i className="fa fa-bars"></i>
+        </button>
           <Link className="brand" to="/" alt="home">MC</Link>
+        </div>
+        <div>
+          <Route 
+          render={({history}) => <SearchBox history={history}></SearchBox>} 
+          >
+          </Route>
         </div>
         <div>
           <Link to="/cart">Cart
@@ -100,6 +130,36 @@ function App() {
           }
         </div>
       </header>
+      <aside className={sidebarIsOpen? 'open' : ''}>
+          <ul className="categories">
+             <li>
+               <strong>Categories</strong>
+               <button
+               onClick={() => setSidebarIsOpen(false)}
+               className="close-sidebar"
+               type="button"
+               >
+                 <i className="fas fa-window-close"></i>
+               </button>
+             </li>
+             {    loadingCategory? (<LoadingBox></LoadingBox>)
+                  :
+                  errorCategory? (<MessageBox variant="danger">{errorCategory}</MessageBox>)
+                  :
+                  (
+                    categories.map((c) => (
+                      <li key={c}>
+                         <Link 
+                         className="aside-li"
+                         to={`/search/category/${c}`}
+                         onClick={() => setSidebarIsOpen(false)}>
+                            {c}
+                         </Link>
+                      </li>
+                    ))
+                  )}
+          </ul>
+      </aside>
       <main className="main">
       <Route path="/cart/:id?" component={CartScreen} exact></Route>
       <Route path="/about" component={AboutScreen}></Route>
@@ -112,6 +172,10 @@ function App() {
       <Route path="/placeorder" component={PlaceOrderScreen}></Route>
       <Route path="/order/:id" component={OrderScreen}></Route>
       <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+      <Route path="/search/name/:name?" component={SearchScreen} exact></Route>
+      <Route path="/search/category/:category" component={SearchScreen} exact></Route>
+      <Route path="/search/category/:category/name/:name" component={SearchScreen} exact></Route>
+
       <PrivateRoute 
       path="/profile"
       component={ProfileScreen}>
