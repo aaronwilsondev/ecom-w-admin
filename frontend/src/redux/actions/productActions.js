@@ -20,13 +20,17 @@ import {
     PRODUCT_CATEGORY_LIST_FAIL
  } from "../constants/productConstants"
 
-export const listProducts = ({ name = '', category = ''  }) => async (dispatch) => {
+export const listProducts = ({ 
+    pageNumber = '',
+    name = '', 
+    category = '',
+}) => async (dispatch) => {
     dispatch({
         type: PRODUCT_LIST_REQUEST
     });
 
     try {
-        const { data } = await Axios.get(`/api/products?name=${name}&category=${category}`);
+        const { data } = await Axios.get(`/api/products?pageNumber=${pageNumber}&name=${name}&category=${category}`);
         dispatch({type: PRODUCT_LIST_SUCCESS, payload: data})
     } catch(error){
         dispatch({type: PRODUCT_LIST_FAIL, payload: error.message});

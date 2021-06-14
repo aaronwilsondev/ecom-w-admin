@@ -11,10 +11,14 @@ export default function SearchScreen(props) {
 
     const dispatch = useDispatch();
 
-    const {name = "all", category = 'all'} = useParams();
+    const {
+        name = "all", 
+        category = 'all',
+        pageNumber = 1,
+    } = useParams();
 
     const productList = useSelector((state) => state.productList);
-    const {loading, error, products} = productList;
+    const {loading, error, products, page, pages} = productList;
 
     const productCategoryList = useSelector((state) => state.productCategoryList);
     const {
@@ -25,15 +29,17 @@ export default function SearchScreen(props) {
 
 useEffect(() => {
     dispatch(listProducts({
+        pageNumber,
         name: name !== "all" ? name: "",
         category: category !== "all" ? category: ""
     }));
-}, [dispatch, name, category]);
+}, [dispatch, name, category, pageNumber]);
 
 const getFilterUrl = (filter) => {
+    const filterPage = filter.page || pageNumber;
     const filterCategory = filter.category || category;
     const filterName = filter.name || name;
-    return `/search/category/${filterCategory}/name/${filterName}`;
+    return `/search/category/${filterCategory}/name/${filterName}/pageNumber/${filterPage}`;
 }
     
     return (
@@ -85,6 +91,22 @@ const getFilterUrl = (filter) => {
           products.map(product => (
             <Product key={product._id} product={product}></Product>
           ))}         
+        </div>
+        <div className="pagination row center">
+            {
+                [...Array(pages).keys()].map((x) => (
+                   <Link 
+                   className={
+                       x+1 === page? 'active':''
+                   }
+                   key={x+1} 
+                   to={getFilterUrl({
+                       page: x + 1
+                   })}>
+                      {x + 1}
+                   </Link>
+                ))
+            }
         </div>
        </>
             )}

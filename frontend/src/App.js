@@ -28,6 +28,10 @@ import SearchScreen from "./pages/SearchScreen/SearchScreen";
 import { listProductsCategories } from "./redux/actions/productActions";
 import MessageBox from "./components/messagebox/messagebox";
 import LoadingBox from "./components/loadingbox/loadingbox";
+import ContactUsScreen from "./pages/ContactUsScreen/ContactUsScreen";
+import DashboardScreen from "./pages/DashboardScreen/DashboardScreen";
+
+import Media from "react-media";
 
 function App() {
 
@@ -61,7 +65,7 @@ function App() {
       <header className="row">
         <div>
         <button
-        type="button"
+        type="button hamburger"
         className="open-sidebar"
         onClick={() => setSidebarIsOpen(true)}
         >
@@ -75,8 +79,13 @@ function App() {
           >
           </Route>
         </div>
+
+<Media query="(min-width: 700px)">
+  {
+    (matches) => {
+      return matches ? (
         <div>
-          <Link to="/cart">Cart
+          <Link to="/cart"><i class="fas fa-shopping-cart"></i>
           {
             cartItems.length > 0 && (
               <span className="badge">{cartItems.length}</span>
@@ -89,7 +98,7 @@ function App() {
           {
             userInfo ? (
               <div className="dropdown">
-              <Link to="#">{userInfo.name} <i className="fa fa-caret-down"></i>
+              <Link to="#"><i class="far fa-user"></i> <i className="fa fa-caret-down"></i>
               </Link>
               <ul className="dropdown-content">
                <li>
@@ -107,6 +116,9 @@ function App() {
               <Link to="/signin">Sign In</Link>
             )
           }
+          <Link to="/contact">
+          <i class="far fa-envelope"></i>
+          </Link>
           {
             userInfo && userInfo.isAdmin && (
               <div className="dropdown">
@@ -129,18 +141,97 @@ function App() {
             )
           }
         </div>
+      ) : ""
+    }
+  }
+</Media>
+
+        
       </header>
       <aside className={sidebarIsOpen? 'open' : ''}>
           <ul className="categories">
-             <li>
-               <strong>Categories</strong>
-               <button
+            <li>
+            <Link className="aside-link" to="/cart"><strong>Cart</strong>
+          {
+            cartItems.length > 0 && (
+              <span className="badge inverted">{cartItems.length}</span>
+            )
+          }
+          </Link>
+          <button
                onClick={() => setSidebarIsOpen(false)}
                className="close-sidebar"
                type="button"
                >
                  <i className="fas fa-window-close"></i>
                </button>
+            </li>
+            <li >
+            <Link className="aside-link link-uline" to="/about">
+             About
+          </Link>
+            </li>
+            
+          
+            {
+            userInfo ? (
+              <li>
+              <div className="dropdown">
+              <Link className="aside-link"  to="#"><i class="far fa-user"></i> <i className="fa fa-caret-down"></i>
+              </Link>
+              <ul className="dropdown-content invert">
+               <li>
+                 <Link className="invert-aside-link" to="#signout" onClick={signoutHandler}>Sign Out</Link>
+               </li>
+               <li>
+                 <Link className="invert-aside-link" to="/profile">User</Link>
+               </li>
+               <li>
+                 <Link className="invert-aside-link" to="/orderhistory">Order History</Link>
+               </li>
+              </ul>
+              </div>
+              </li>
+            ) : (
+              <li>
+              <Link to="/signin">Sign In</Link>
+              </li>
+            )
+          }
+          <li>
+          <Link className="aside-link"  to="/contact">
+          <i class="far fa-envelope"></i>
+          </Link>
+          </li>
+          <li>
+          {
+            userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link className="aside-link"  to="#admin">Admin {' '} <i className="fa fa-caret-down"></i></Link>
+                <ul className="dropdown-content invert">
+                  <li>
+                    <Link className="invert-aside-link" to="/dashboard">Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link className="invert-aside-link" to="/productlist">Products</Link>
+                  </li>
+                  <li>
+                    <Link className="invert-aside-link" to="/orderlist">Orders</Link>
+                  </li>
+                  <li>
+                    <Link className="invert-aside-link" to="/userlist">Users</Link>
+                  </li>
+                </ul>
+              </div>
+            )
+          }
+          </li>
+
+
+
+
+             <li>
+               <strong>Categories</strong>
              </li>
              {    loadingCategory? (<LoadingBox></LoadingBox>)
                   :
@@ -166,6 +257,7 @@ function App() {
       <Route path="/product/:id" component={ProductScreen} exact></Route>
       <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
       <Route path="/signin" component={SignInScreen}></Route>
+      <Route path="/contact" component={ContactUsScreen}></Route>
       <Route path="/register" component={RegisterScreen}></Route>
       <Route path="/shipping" component={ShippingAddressScreen}></Route>
       <Route path="/payment" component={PaymentMethodScreen}></Route>
@@ -174,16 +266,25 @@ function App() {
       <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
       <Route path="/search/name/:name?" component={SearchScreen} exact></Route>
       <Route path="/search/category/:category" component={SearchScreen} exact></Route>
-      <Route path="/search/category/:category/name/:name" component={SearchScreen} exact></Route>
+      <Route path="/search/category/:category/name/:name/pageNumber/:pageNumber" component={SearchScreen} exact></Route>
 
       <PrivateRoute 
       path="/profile"
       component={ProfileScreen}>
        </PrivateRoute>
+
        <AdminRoute
        path="/productlist"
-       component={ProductListScreen}>
+       component={ProductListScreen}
+       exact>
+      
        </AdminRoute>
+       <AdminRoute
+       path="/productlist/pageNumber/:pageNumber"
+       component={ProductListScreen}
+       exact>
+       </AdminRoute>
+
        <AdminRoute
        path="/orderlist"
        component={OrderListScreen}>
@@ -196,7 +297,12 @@ function App() {
        path="/user/:id/edit"
        component={UserEditScreen}>
        </AdminRoute>
+       <AdminRoute
+       path="/dashboard"
+       component={DashboardScreen}>
+       </AdminRoute>
       <Route path="/" component={HomeScreen} exact></Route>
+      <Route path="/pageNumber/:pageNumber" component={HomeScreen} exact></Route>
       </main>
       <footer className="row center column">
          <div className="icons">
