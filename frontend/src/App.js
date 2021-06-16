@@ -25,7 +25,7 @@ import UserEditScreen from "./pages/UserEditScreen/UserEditScreen";
 import AboutScreen from "./pages/AboutScreen/AboutScreen";
 import SearchBox from "./components/SearchBox/SearchBox";
 import SearchScreen from "./pages/SearchScreen/SearchScreen";
-import { listProductsCategories } from "./redux/actions/productActions";
+import { listProductsCategories, listProductsSizes } from "./redux/actions/productActions";
 import MessageBox from "./components/messagebox/messagebox";
 import LoadingBox from "./components/loadingbox/loadingbox";
 import ContactUsScreen from "./pages/ContactUsScreen/ContactUsScreen";
@@ -54,7 +54,8 @@ function App() {
   };
 
   useEffect(() => {
-    dispatch(listProductsCategories())
+    dispatch(listProductsCategories());
+    dispatch(listProductsSizes());
   }, [dispatch]);
 
   const currentYear= new Date().getFullYear();
@@ -108,7 +109,7 @@ function App() {
                  <Link to="/profile">User</Link>
                </li>
                <li>
-                 <Link to="/orderhistory">Order History</Link>
+                 <Link to="/orderhistory">OrderHistory</Link>
                </li>
               </ul>
               </div>
@@ -194,7 +195,7 @@ function App() {
               </li>
             ) : (
               <li>
-              <Link to="/signin">Sign In</Link>
+              <Link className="aside-link"  to="/signin">Sign In</Link>
               </li>
             )
           }
@@ -203,9 +204,10 @@ function App() {
           <i class="far fa-envelope"></i>
           </Link>
           </li>
-          <li>
+          
           {
             userInfo && userInfo.isAdmin && (
+              <li>
               <div className="dropdown">
                 <Link className="aside-link"  to="#admin">Admin {' '} <i className="fa fa-caret-down"></i></Link>
                 <ul className="dropdown-content invert">
@@ -223,9 +225,10 @@ function App() {
                   </li>
                 </ul>
               </div>
-            )
+              </li>
+            ) 
           }
-          </li>
+          
 
 
 
@@ -266,7 +269,8 @@ function App() {
       <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
       <Route path="/search/name/:name?" component={SearchScreen} exact></Route>
       <Route path="/search/category/:category" component={SearchScreen} exact></Route>
-      <Route path="/search/category/:category/name/:name/pageNumber/:pageNumber" component={SearchScreen} exact></Route>
+      <Route path="/search/size/:size" component={SearchScreen} exact></Route>
+      <Route path="/search/category/:category/size/:size/name/:name/pageNumber/:pageNumber" component={SearchScreen} exact></Route>
 
       <PrivateRoute 
       path="/profile"

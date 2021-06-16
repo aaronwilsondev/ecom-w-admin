@@ -31,7 +31,7 @@ export default function OrderListScreen(props) {
    }, [dispatch, successDelete]);
 
    const deleteHandler = (order) => {
-      if(window.confirm('Are you sure yoyu want to delete?')) {
+      if(window.confirm('Are you sure you want to delete?')) {
           dispatch(deleteOrder(order._id));
       }
    };

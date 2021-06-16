@@ -89,7 +89,7 @@ const createHandler = () => {
                              <th>NAME</th>
                              <th>PRICE</th>
                              <th>CATEGORY</th>
-                             <th>BRAND</th>
+                             <th>SIZE</th>
                              <th>ACTIONS</th>
                          </tr>
                      </thead>
@@ -101,7 +101,7 @@ const createHandler = () => {
                                      <td>{product.name}</td>
                                      <td>{product.price}</td>
                                      <td>{product.category}</td>
-                                     <td>{product.Brand}</td>
+                                     <td>{product.size}</td>
                                      <td>
                                          <button 
                                          type="button" 

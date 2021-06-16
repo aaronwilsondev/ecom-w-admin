@@ -16,6 +16,9 @@ import {
     PRODUCT_LIST_FAIL, 
     PRODUCT_LIST_REQUEST, 
     PRODUCT_LIST_SUCCESS, 
+    PRODUCT_SIZE_LIST_FAIL, 
+    PRODUCT_SIZE_LIST_REQUEST, 
+    PRODUCT_SIZE_LIST_SUCCESS, 
     PRODUCT_UPDATE_FAIL, 
     PRODUCT_UPDATE_REQUEST, 
     PRODUCT_UPDATE_RESET, 
@@ -114,6 +117,22 @@ export const productCategoryListReducer = (
         case PRODUCT_CATEGORY_LIST_SUCCESS:
             return {loading: false, categories: action.payload};
         case PRODUCT_CATEGORY_LIST_FAIL: 
+            return {loading: false, error: action.payload};
+            default:
+                return state;
+    }
+};
+
+export const productSizeListReducer = (
+    state = {loading: true, products: []}, 
+    action
+    ) => {
+    switch(action.type){
+        case PRODUCT_SIZE_LIST_REQUEST:
+            return {loading: true};
+        case PRODUCT_SIZE_LIST_SUCCESS:
+            return {loading: false, sizes: action.payload};
+        case PRODUCT_SIZE_LIST_FAIL: 
             return {loading: false, error: action.payload};
             default:
                 return state;

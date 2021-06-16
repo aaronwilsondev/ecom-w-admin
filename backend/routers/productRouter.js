@@ -8,21 +8,25 @@ const productRouter = express.Router();
 
 
 productRouter.get('/', expressAsyncHandler(async (req, res) => {
-    const pageSize = 4;
+    const pageSize = 12;
     const page = Number(req.query.pageNumber) || 1;
     const name = req.query.name || '';
+    const size = req.query.size || '';
     const category = req.query.category || '';
     const nameFilter = name ? { name: {$regex: name, $options: 'i'} } : {};
     const categoryFilter = category? { category } : {};
+    const sizeFilter = size? { size } : {};
     
     const count = await Product.count({
         ...nameFilter, 
         ...categoryFilter,
+        ...sizeFilter,
     });
 
     const products = await Product.find({
         ...nameFilter, 
         ...categoryFilter,
+        ...sizeFilter,
     }).populate()
     .skip(pageSize* (page -1))
     .limit(pageSize);
@@ -36,7 +40,12 @@ productRouter.get('/', expressAsyncHandler(async (req, res) => {
   productRouter.get('/categories', expressAsyncHandler(async (req, res) => {
       const categories = await Product.find().distinct('category');
       res.send(categories)
-  }))
+  }));
+
+  productRouter.get('/sizes', expressAsyncHandler(async (req, res) => {
+    const sizes = await Product.find().distinct('size');
+    res.send(sizes)
+}));
 
 productRouter.get('/seed', expressAsyncHandler(async(req, res) => {
     const createdProducts = await Product.insertMany(data.products);
@@ -62,7 +71,7 @@ productRouter.post(
         image: "/images/p1.jpg",
         price: 0,
         category: "sample Category",
-        Brand: "sample Brand",
+        size: "sample Size",
         countInStock: 0,
         rating: 0,
         numReviews: 0,
@@ -81,7 +90,7 @@ productRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async(req, res) =
         product.price = req.body.price;
         product.image = req.body.image;
         product.category = req.body.category;
-        product.brand = req.body.brand;
+        product.size = req.body.size;
         product.countInStock = req.body.countInStock;
         product.description = req.body.description;
         const updatedProduct = await product.save();

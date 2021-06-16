@@ -12,7 +12,7 @@ export default function ProductEditScreen(props) {
     const [price, setPrice] = useState('');
     const [image, setImage] = useState('');
     const [category, setCategory] = useState('');
-    const [brand, setBrand] = useState('');
+    const [size, setSize] = useState('');
     const [countInStock, setCountInStock] = useState('');
     const [description, setDescription] = useState('');
 
@@ -43,7 +43,7 @@ export default function ProductEditScreen(props) {
             setImage(product.image);
             setCategory(product.category);
             setCountInStock(product.countInStock);
-            setBrand(product.brand);
+            setSize(product.size);
             setDescription(product.description);
         }
     }, [dispatch, productId, product, props.history, successUpdate]);
@@ -56,7 +56,7 @@ export default function ProductEditScreen(props) {
             price,
             image,
             category,
-            brand,
+            size,
             countInStock,
             description,
         }))
@@ -74,7 +74,7 @@ export default function ProductEditScreen(props) {
         bodyFormData.append('image', file);
         setLoadingUpload(true);
         try{
-            const {data} = await Axios.post('/api/uploads', bodyFormData, {
+            const {data} = await Axios.post('/api/uploads/s3', bodyFormData, {
                 headers: {
                 'Content-Type':"multipart/form-data",
                 Authorization:`Bearer ${userInfo.token}`,
@@ -158,13 +158,13 @@ export default function ProductEditScreen(props) {
                       ></input>
                   </div>
                   <div>
-                      <label htmlFor="brand">Brand</label>
+                      <label htmlFor="size">Size</label>
                       <input 
-                      id="brand" 
+                      id="size" 
                       type="text"
-                      placeholder="Enter brand"
-                      value={brand}
-                      onChange={(e) => setBrand(e.target.value)}
+                      placeholder="Enter Size"
+                      value={size}
+                      onChange={(e) => setSize(e.target.value)}
                       ></input>
                   </div>
                   <div>
