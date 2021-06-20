@@ -81,7 +81,7 @@ return loading?
  :
  (
    
-        <div>
+        <div className="screen">
           <h1>Order {order._id}</h1>
             <div className="row top">
               <div className="col-2">

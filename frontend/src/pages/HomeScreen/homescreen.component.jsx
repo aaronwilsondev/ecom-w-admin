@@ -35,7 +35,9 @@ useEffect(() => {
         {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
         <div className="shop-page row center bottom">
         {
-          products.map(product => (
+          products
+          .filter(product => product.countInStock > 0)
+          .map(product => (
             <Product key={product._id} product={product}></Product>
           ))}         
         </div>

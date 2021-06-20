@@ -28,7 +28,7 @@ const submitHandler = (e) => {
 }
 
     return (
-        <div>
+        <div className="screen">
             <CheckoutSteps step1 step2></CheckoutSteps>
             <form 
             className="form"

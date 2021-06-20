@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import axios from '../../../node_modules/axios/index';
+import Axios from '../../../node_modules/axios/index';
 import LoadingBox from '../../components/loadingbox/loadingbox';
 import MessageBox from '../../components/messagebox/messagebox';
 import { detailsProduct, updateProduct } from '../../redux/actions/productActions';
@@ -68,47 +68,26 @@ export default function ProductEditScreen(props) {
     const userSignin = useSelector((state) => state.userSignin);
     const {userInfo} = userSignin;
 
-    const uploadFileHandler = (e) => {
+
+    const uploadFileHandler = async(e) => {
         const file = e.target.files[0];
         const bodyFormData = new FormData();
         bodyFormData.append('image', file);
         setLoadingUpload(true);
-            axios.post('/api/uploads/s3', bodyFormData, {
+        try{
+            const {data} = await Axios.post('/api/uploads/s3', bodyFormData, {
                 headers: {
                 'Content-Type':"multipart/form-data",
                 Authorization:`Bearer ${userInfo.token}`,
             },
-            })
-            .then((response) => {
-                setImage(response.data);
-                console.log(response.data);
-                setLoadingUpload(false);
-            })      
-           .catch((error) => {
+            });
+            setImage(data);
+            setLoadingUpload(false);
+        } catch (error) {
             setErrorUpload(error.message);
             setLoadingUpload(false);
-        })
+        }
     }
-
-    // const uploadFileHandler = async(e) => {
-    //     const file = e.target.files[0];
-    //     const bodyFormData = new FormData();
-    //     bodyFormData.append('image', file);
-    //     setLoadingUpload(true);
-    //     try{
-    //         const {data} = await Axios.post('/api/uploads/s3', bodyFormData, {
-    //             headers: {
-    //             'Content-Type':"multipart/form-data",
-    //             Authorization:`Bearer ${userInfo.token}`,
-    //         },
-    //         });
-    //         setImage(data);
-    //         setLoadingUpload(false);
-    //     } catch (error) {
-    //         setErrorUpload(error.message);
-    //         setLoadingUpload(false);
-    //     }
-    // }
 
     return (
         <div>

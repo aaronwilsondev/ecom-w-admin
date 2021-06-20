@@ -15,7 +15,7 @@ useEffect(() => {
 }, [dispatch]);
 
     return (
-        <div>
+        <div className="screen">
             <h1>Order History</h1> 
             {
                 loading? (

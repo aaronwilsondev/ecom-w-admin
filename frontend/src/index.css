@@ -155,6 +155,12 @@ button.small {
   font-size: 1.2rem;
 }
 
+button.small.invert{
+  color: #114e60;
+  background-color: #ffffff;
+  border: 0.1rem solid #114e60;
+}
+
 .row{
   display: flex;
   flex-wrap: wrap;
@@ -449,9 +455,9 @@ input {
   font-weight: bold;
 }
 
-.checkout-steps > div.active {
-  border-top-color: #f0800f;
-  color: #f0800f;
+.checkout-steps > div.active-step {
+  border-top-color: #ffc996;
+  color: #ffc996;
 }
 
 /* Table */ 
@@ -773,6 +779,12 @@ input {
 
 .search-page{
   padding: 1.5rem;
+}
+
+/* screen */
+
+.screen {
+  padding: 1rem;
 }
 
 /* Contact */

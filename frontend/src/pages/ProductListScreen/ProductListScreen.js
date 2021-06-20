@@ -60,7 +60,7 @@ const createHandler = () => {
 }
 
     return (
-        <div>
+        <div className="screen">
            <div className="row">
             <h1>Products</h1>
             <button
@@ -105,17 +105,17 @@ const createHandler = () => {
                                      <td>
                                          <button 
                                          type="button" 
-                                         className="small"
+                                         className="small invert"
                                          onClick={() => props.history.push(`/product/${product._id}/edit`)}
                                          >
                                           Edit
                                          </button>
                                          <button
-                                         type="button"
-                                         className="small"
+                                         type="button" 
+                                         className="small invert"
                                          onClick={() => deleteHandler(product)}
                                          >
-                                          Delete
+                                          <i className="fas fa-window-close"></i>
                                          </button>
                                      </td>
                                  </tr>

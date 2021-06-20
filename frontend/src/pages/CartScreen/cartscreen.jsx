@@ -29,7 +29,7 @@ const checkoutHandler = () => {
     props.history.push("/signin?redirect=shipping");
 }
     return(
-       <div className="row top">
+       <div className="row top screen">
          <div className="col-2">
          <h1>Shopping Cart</h1>
          {

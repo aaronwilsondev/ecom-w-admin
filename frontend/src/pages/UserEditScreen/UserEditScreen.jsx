@@ -51,7 +51,7 @@ export default function UserEditScreen(props) {
   };
 
     return (
-        <div>
+        <div className="screen">
             <form 
             className="form"
             onSubmit={submitHandler}

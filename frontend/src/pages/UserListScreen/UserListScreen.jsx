@@ -33,7 +33,7 @@ const deleteHandler = (user) => {
 }
 
     return (
-        <div>
+        <div className="screen">
             <h1>Users</h1>
             {loadingDelete && <LoadingBox></LoadingBox>}
             {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
@@ -66,7 +66,7 @@ const deleteHandler = (user) => {
                                      <td>{user.isAdmin ? "YES" : "NO"}</td>
                                      <td>
                                          <button
-                                         className="small"
+                                         className="small invert"
                                          type="button"
                                          onClick={() => props.history.push(`/user/${user._id}/edit`)}
                                          >
@@ -74,10 +74,10 @@ const deleteHandler = (user) => {
                                          </button>
                                          <button
                                          type="button"
-                                         className="small"
+                                         className="small invert"
                                          onClick={() => deleteHandler(user)}
                                          >
-                                          Delete
+                                          <i className="fas fa-window-close"></i>
                                          </button>
                                      </td>
                                    </tr>

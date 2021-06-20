@@ -37,7 +37,7 @@ export default function OrderListScreen(props) {
    };
 
     return (
-            <div>
+            <div className="screen">
              <div>
             <h1>Orders</h1> 
             {loadingDelete && <LoadingBox></LoadingBox>}
@@ -77,17 +77,17 @@ export default function OrderListScreen(props) {
                                         <td>
                                             <button 
                                             type="button" 
-                                            className="small"
+                                            className="small invert"
                                             onClick={() => {props.history.push(`/order/${order._id}`)}}
                                             >
                                               Details
                                             </button>
                                             <button
-                                            className="small"
+                                            className="small invert"
                                             type="button"
                                             onClick={() => deleteHandler(order)}
                                             >
-                                               Delete
+                                               <i className="fas fa-window-close"></i>
                                             </button>
                                         </td>
                                     </tr>
