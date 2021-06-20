@@ -5,7 +5,7 @@ import multerS3 from "multer-s3";
 import aws from "aws-sdk";
 import config from '../config.js';
 
-const uploadRouter = express.Router();
+
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
@@ -19,6 +19,8 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage
 });
+
+const uploadRouter = express.Router();
 
 uploadRouter.post('/', isAuth, upload.single('image'), (req, res) => {
     res.send(`/${req.file.path}`);
