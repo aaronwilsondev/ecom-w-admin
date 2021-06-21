@@ -24,7 +24,7 @@ const dispatch = useDispatch();
 const submitHandler = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress({fullName, address, city, postalCode, country}));
-    props.history.push('/payment');
+    props.history.push('/placeorder');
 }
 
     return (

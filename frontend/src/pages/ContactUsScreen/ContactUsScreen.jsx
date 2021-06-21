@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function ContactUsScreen() {
+export default function ContactUsScreen(props) {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -8,6 +8,7 @@ export default function ContactUsScreen() {
 
   const submitHandler = (e) => {
       e.preventDefault();
+      props.history.push('/');
   }
 
     return (
