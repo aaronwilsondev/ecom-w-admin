@@ -178,7 +178,7 @@ function App() {
             {
             userInfo ? (
               <li>
-              <div className="dropdown">
+              <div className="dropdown"> 
               <Link className="aside-link"  to="#"><i class="far fa-user"></i> <i className="fa fa-caret-down"></i>
               </Link>
               <ul className="dropdown-content invert">

@@ -45,6 +45,7 @@ body{
 header{
   grid-area: header;
  background-color: #ca8a8b;
+ border-bottom: 0.3rem solid #ffffff;
 }
 
 main{
