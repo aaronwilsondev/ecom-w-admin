@@ -599,7 +599,7 @@ input {
   }
 }
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 400px){
 
   .hero-container {
     height: 400px;
@@ -618,7 +618,7 @@ input {
   }
 
   .hero-text{
-    width: 65%;
+    width: 55%;
   }
 }
 
@@ -777,6 +777,14 @@ input {
   border-right: none;
   margin-left: 0.5rem;
 }
+
+@media only screen and (max-width: 400px){
+  .search input {
+    max-width: 100px;
+  }
+}
+
+
 
 .search-page{
   padding: 1.5rem;

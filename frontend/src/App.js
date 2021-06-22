@@ -77,7 +77,7 @@ function App() {
         </div>
         <div>
           <Route 
-          render={({history}) => <SearchBox history={history}></SearchBox>} 
+          render={({history}) => <SearchBox className="search-box" history={history}></SearchBox>} 
           >
           </Route>
         </div>
