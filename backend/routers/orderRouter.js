@@ -116,7 +116,7 @@ orderRouter.put('/:id/pay', isAuth, expressAsyncHandler(async(req, res) => {
             await product.save();
           }
         mailgun().messages().send({
-            from: 'MC <mc-gallery-ecom@mg.yourdomain.com>',
+            from: 'MC <postmaster@emsiart.com>',
             to: `${order.user.name} <${order.user.email}>`,
             subject: `New Order ${order._id}`,
             html: payOrderEmailTemplate(order),

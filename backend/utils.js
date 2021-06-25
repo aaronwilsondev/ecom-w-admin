@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import mg from "mailgun-js";
+import Mailgun from "mailgun.js";
 import config from "./config.js";
 
 export const generateToken = (user) => {
@@ -42,9 +42,9 @@ export const isAdmin = (req, res, next) => {
     }
 };
 
-export const mailgun = () => mg({
-    apiKey: config.MAILGUN_API_KEY,
-    domain: config.MAILGUN_DOMAIN
+export const mailgun = () => Mailgun({
+    apiKey: process.env.MAILGUN_API_KEY,
+    domain: process.env.MAILGUN_DOMAIN
 });
 
 export const payOrderEmailTemplate = (order) => {

@@ -27,10 +27,12 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mailgun-js": "^0.22.0",
+   
+    "mailgun.js": "^3.4.1",
     "mongoose": "^5.12.9",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
+    "netmask": "^2.0.1",
     "react-media": "^1.10.0",
     "stripe": "^8.156.0"
   },

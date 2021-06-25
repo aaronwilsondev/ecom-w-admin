@@ -281,6 +281,20 @@ a.brand{
   font-family: "Homemade Apple";
 }
 
+.logo-container {
+  height: 100%;
+  width: 5rem;
+position: relative;
+}
+
+.logo {
+  color: #ffffff;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  bottom: -0.7rem;
+}
+
 .badge {
   background-color: #114e60;
   color: #ffffff;

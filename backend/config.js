@@ -13,3 +13,13 @@ export default {
     MAILGUN_DOMAIN: process.env.MAILGUN_DOMAIN || "mailgunDomain",
 
 }
+
+
+// curl -s --user 'api:b2ad9800b79308f82316db1ffb32ed69-24e2ac64-245d2b15' \
+// https://api.eu.mailgun.net/v3/emsiart.com/messages \
+// -F from='Excited User <mailgun@emsiart.com>' \
+// -F to=aaronwilson1234@outlook.ie \
+// -F subject='Hello' \
+// -F text='Testing some Mailgun awesomeness!'
+
+/*mailgun testdata */

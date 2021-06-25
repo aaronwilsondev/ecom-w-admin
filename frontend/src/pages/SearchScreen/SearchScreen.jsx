@@ -46,6 +46,7 @@ useEffect(() => {
         category: category !== "all" ? category: "",
         
     }));
+    
 }, [dispatch, name, category, pageNumber, size]);
 
 const handleCategoryDrop = () => {
@@ -62,6 +63,7 @@ const getFilterUrl = (filter) => {
     const filterSize = filter.size || size;
     const filterName = filter.name || name;
     return `/search/category/${filterCategory}/size/${filterSize}/name/${filterName}/pageNumber/${filterPage}`;
+   
 }
     
     return (
@@ -105,6 +107,7 @@ const getFilterUrl = (filter) => {
                                     {c}
                                 </Link>
                            </li>
+                           
                        ))}
                     </ul>
                  )

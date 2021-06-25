@@ -23,7 +23,7 @@ export default function AboutScreen() {
                 </div>
             </div>
             <div className="about-image-container">
-                <img className="about-image" src="/images/hero-section.jpg" alt="fluid art"></img>
+                <img className="about-image" src="/images/about-section.jpg" alt="fluid art"></img>
             </div>
         </div>
     )

@@ -30,6 +30,7 @@ import MessageBox from "./components/messagebox/messagebox";
 import LoadingBox from "./components/loadingbox/loadingbox";
 import ContactUsScreen from "./pages/ContactUsScreen/ContactUsScreen";
 import DashboardScreen from "./pages/DashboardScreen/DashboardScreen";
+import Logo from "./assets/Shape-3-white.svg";
 
 import Media from "react-media";
 
@@ -65,7 +66,7 @@ function App() {
     <BrowserRouter>
     <div className="grid-container">
       <header className="row">
-        <div>
+        <div className="row">
         <button
         type="button hamburger"
         className="open-sidebar"
@@ -73,7 +74,9 @@ function App() {
         >
           <i className="fa fa-bars"></i>
         </button>
-          <Link className="brand" to="/" alt="home">MC</Link>
+          <div className="logo-container">
+            <Link className="brand" to="/" alt="home"><img className="logo" src={Logo} alt="logo"></img></Link>
+          </div>
         </div>
         <div>
           <Route 
