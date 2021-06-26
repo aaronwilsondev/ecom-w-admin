@@ -44,9 +44,11 @@ body{
 
 header{
   grid-area: header;
- background-color: #ca8a8b;
+ background-color: #ffffff ;
  border-bottom: 0.3rem solid #ffffff;
 }
+
+/* #ca8a8b */
 
 main{
   grid-area: main;
