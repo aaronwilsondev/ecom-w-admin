@@ -42,7 +42,7 @@ export default function ProductScreen(props) {
                       <h1>{product.name}</h1>
                   </li>
                   <li>
-                      Price : ${product.price}
+                      Price : €{product.price}
                   </li>
                   <li>
                      Description:
@@ -56,7 +56,7 @@ export default function ProductScreen(props) {
                    <li>
                        <div className="row">
                          <div>Price</div>
-                         <div>${product.price}</div>
+                         <div>€{product.price}</div>
                        </div>
                    </li>
                    <li>

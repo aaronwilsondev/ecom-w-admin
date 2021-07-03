@@ -114,8 +114,11 @@ orderRouter.put('/:id/pay', isAuth, expressAsyncHandler(async(req, res) => {
             product.countInStock -= item.qty;
             product.sold += item.qty;      
             await product.save();
+            console.log("item removed")
           }
-        mailgun().messages().send({
+          mailgun()
+          .messages()
+          .send({
             from: 'MC <postmaster@emsiart.com>',
             to: `${order.user.name} <${order.user.email}>`,
             subject: `New Order ${order._id}`,
@@ -123,19 +126,24 @@ orderRouter.put('/:id/pay', isAuth, expressAsyncHandler(async(req, res) => {
         }, (error, body) => {
             if(error){
                 console.log(error);
+                console.log("triggered")
             } else {
                 console.log(body);
+                console.log("working")
             }
-        });
+        }
+        );
         res.send({
             message: "Order Paid", order:updatedOrder
         });
+        console.log("success");
     } else {
         res.status(404).send({
             message: "Order Not Paid",
-        })
+        });
     }
-}));
+})
+);
 
 orderRouter.delete('/:id', isAuth, isAdmin, expressAsyncHandler(async(req, res) => {
     const order = await Order.findById(req.params.id);

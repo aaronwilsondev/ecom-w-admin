@@ -67,7 +67,7 @@ const checkoutHandler = () => {
                                </select>
                               </div>
                               <div>
-                                  ${item.price}
+                              €{item.price}
                               </div>
                               <div>
                                   <button 

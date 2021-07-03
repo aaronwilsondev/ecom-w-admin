@@ -156,12 +156,8 @@ function App() {
       <aside className={sidebarIsOpen? 'open' : ''}>
           <ul className="categories">
             <li>
-            <Link className="aside-link" to="/cart"><strong>Cart</strong>
-          {
-            cartItems.length > 0 && (
-              <span className="badge inverted">{cartItems.length}</span>
-            )
-          }
+            <Link className="aside-link link-uline" to="/about">
+             About
           </Link>
           <button
                onClick={() => setSidebarIsOpen(false)}
@@ -172,12 +168,14 @@ function App() {
                </button>
             </li>
             <li >
-            <Link className="aside-link link-uline" to="/about">
-             About
-          </Link>
+             <Link className="aside-link" to="/cart"><strong>Cart</strong>
+               {
+                cartItems.length > 0 && (
+                 <span className="badge inverted">{cartItems.length}</span>
+                 )
+               }
+             </Link>
             </li>
-            
-          
             {
             userInfo ? (
               <li>
@@ -314,16 +312,16 @@ function App() {
       </main>
       <footer className="row center column">
          <div className="icons">
-           <Link className="f-icon">
+           <Link to="" className="f-icon">
              <i className="fa-2x social-icon fab fa-twitter"></i>
            </Link>
-           <Link className="f-icon">
+           <Link to="" className="f-icon">
              <i className=" fa-2x social-icon fab fa-facebook"></i>
            </Link>
-           <Link className="f-icon">
+           <Link to="" className="f-icon">
              <i className="fa-2x social-icon fab fa-instagram"></i>
            </Link>
-           <Link className="f-icon">
+           <Link to="" className="f-icon">
              <i className="fa-2x social-icon fas fa-envelope"></i>
            </Link>
          </div>

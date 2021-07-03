@@ -139,7 +139,7 @@ return loading?
                                  <Link to={`/product/${item.product}`}>{item.name}</Link>
                               </div>                    
                               <div>
-                                 {item.qty} x ${item.price} = ${item.qty * item.price}
+                                 {item.qty} x €{item.price} = €{item.qty * item.price}
                               </div>
                              </div>
                          </li>
@@ -158,19 +158,19 @@ return loading?
                       <li>
                           <div className="row">
                             <div>Items</div>
-                            <div>${order.itemsPrice.toFixed(2)}</div>
+                            <div>€{order.itemsPrice.toFixed(2)}</div>
                           </div>
                       </li>
                       <li>
                           <div className="row">
                             <div>Shipping</div>
-                            <div>${order.shippingPrice.toFixed(2)}</div>
+                            <div>€{order.shippingPrice.toFixed(2)}</div>
                           </div>
                       </li>
                       <li>
                           <div className="row">
                             <div>Tax</div>
-                            <div>${order.taxPrice.toFixed(2)}</div>
+                            <div>€{order.taxPrice.toFixed(2)}</div>
                           </div>
                       </li>
                       <li>
@@ -182,7 +182,7 @@ return loading?
                             </div>
                             <div>
                              <strong>
-                             ${order.totalPrice.toFixed(2)}
+                             €{order.totalPrice.toFixed(2)}
                              </strong>
                             </div>
                           </div>

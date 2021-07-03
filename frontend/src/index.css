@@ -710,7 +710,7 @@ input {
 
 @media only screen and (max-width: 1400px){
 .about-container{
-  height: 800px;
+  height: 900px;
 }
 
 .about-title{
@@ -724,7 +724,7 @@ input {
 
 @media only screen and (max-width: 900px){
   .about-container{
-    height: 800px;
+    height: 850px;
   }
   
   .about-image-container{

@@ -19,7 +19,7 @@ const {product} = props
               </Link>
               <h2>{product.size}</h2>
               <div className="price">
-                ${product.price}
+              €{product.price}
               </div>
             </div>
           </div>
