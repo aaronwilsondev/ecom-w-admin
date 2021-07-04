@@ -93,8 +93,9 @@ return loading?
                           <h2>Shipping</h2>
                           <p>
                               <strong>Name:</strong> {order.shippingAddress.fullName} <br/>
+                              <strong>Email:</strong> {cart.shippingAddress.email} <br/>
                               <strong>Address:</strong> {order.shippingAddress.address}, 
-                              {order.shippingAddress.city}, {order.shippingAddress.postalCode},
+                              {order.shippingAddress.city} , {order.shippingAddress.postalCode},
                               {order.shippingAddress.country}
                           </p>
                           {

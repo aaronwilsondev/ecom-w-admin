@@ -64,6 +64,7 @@ return (
                           <h2>Shipping</h2>
                           <p>
                               <strong>Name:</strong> {cart.shippingAddress.fullName} <br/>
+                              <strong>Email:</strong> {cart.shippingAddress.email} <br/>
                               <strong>Address:</strong> {cart.shippingAddress.address}, 
                               {cart.shippingAddress.city}, {cart.shippingAddress.postalCode},
                               {cart.shippingAddress.country}

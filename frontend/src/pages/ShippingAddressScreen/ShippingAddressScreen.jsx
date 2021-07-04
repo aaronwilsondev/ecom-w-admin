@@ -19,12 +19,13 @@ const [ city, setCity ] = useState(shippingAddress.city);
 const [ postalCode, setPostalCode ] = useState(shippingAddress.postalCode);
 const [ country, setCountry ] = useState(shippingAddress.country);
 const [ shipping, setShipping ] = useState(shippingAddress.shipping);
+const [ email, setEmail ] = useState(shippingAddress.email);
 
 const dispatch = useDispatch();
 
 const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({fullName, address, city, postalCode, country, shipping}));
+    dispatch(saveShippingAddress({fullName, address, city, postalCode, country, shipping, email}));
     props.history.push('/placeorder');
 }
 
@@ -46,6 +47,17 @@ const submitHandler = (e) => {
                 placeholder="Enter full name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
+                required
+                ></input>
+            </div>
+            <div>
+                <label html="email">Full Email</label>
+                <input
+                type="email"
+                id="email"
+                placeholder="Enter contact email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 ></input>
             </div>

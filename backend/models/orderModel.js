@@ -22,6 +22,7 @@ shippingAddress: {
     postalCode: {type: String, required: true},
     country: {type: String, required: true},
     shipping: {type: String, required: true},
+    email: {type: String, required: true},
 },
 paymentMethod: { type: String, required: true},
 paymentResult: {
