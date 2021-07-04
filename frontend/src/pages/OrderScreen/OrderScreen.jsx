@@ -10,6 +10,8 @@ import { ORDER_DELIVER_RESET, ORDER_PAY_RESET } from '../../redux/constants/orde
 
 export default function OrderScreen(props) {
 
+  const cart = useSelector((state) => state.cart);
+
 const orderId = props.match.params.id;
 const [sdkReady, setSdkReady] = useState(false);
 const orderDetails = useSelector((state) => state.orderDetails);
@@ -157,19 +159,29 @@ return loading?
                       </li>
                       <li>
                           <div className="row">
-                            <div>Items</div>
+                            <div><strong>Items:</strong></div>
                             <div>€{order.itemsPrice.toFixed(2)}</div>
                           </div>
                       </li>
                       <li>
                           <div className="row">
-                            <div>Shipping</div>
-                            <div>€{order.shippingPrice.toFixed(2)}</div>
+                            <div><strong>Shipping:</strong></div>
+                            {
+                              cart.shippingAddress.shipping === "ireland" ? (
+                                <div>€{cart.shippingPrice}</div>
+                              )
+                              :
+                              (
+                                <div>
+                                  due to the varying sizes, all international deliverys will be contacted to arrange shipping
+                                </div>
+                              )
+                            }  
                           </div>
                       </li>
                       <li>
                           <div className="row">
-                            <div>Tax</div>
+                            <div><strong>Tax:</strong></div>
                             <div>€{order.taxPrice.toFixed(2)}</div>
                           </div>
                       </li>
@@ -177,7 +189,7 @@ return loading?
                           <div className="row">
                             <div>
                              <strong>
-                             Order Total
+                             Order Total:
                              </strong>
                             </div>
                             <div>

@@ -431,6 +431,18 @@ input {
   border-radius: 0.5rem;
 }
 
+select {
+  padding: 1rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 0.5rem;
+}
+
+option {
+  padding: 1rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 0.5rem;
+}
+
 /* Dropdown */ 
 .dropdown {
   display: inline-block;

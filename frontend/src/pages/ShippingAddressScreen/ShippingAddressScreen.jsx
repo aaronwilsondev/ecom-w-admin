@@ -18,12 +18,13 @@ const [ address, setAddress ] = useState(shippingAddress.address);
 const [ city, setCity ] = useState(shippingAddress.city);
 const [ postalCode, setPostalCode ] = useState(shippingAddress.postalCode);
 const [ country, setCountry ] = useState(shippingAddress.country);
+const [ shipping, setShipping ] = useState(shippingAddress.shipping);
 
 const dispatch = useDispatch();
 
 const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({fullName, address, city, postalCode, country}));
+    dispatch(saveShippingAddress({fullName, address, city, postalCode, country, shipping}));
     props.history.push('/placeorder');
 }
 
@@ -91,6 +92,27 @@ const submitHandler = (e) => {
                 onChange={(e) => setCountry(e.target.value)}
                 required
                 ></input>
+            </div>
+            <div>
+            <label html="shipping">Shipping</label>
+                <select 
+                value={shipping} 
+                onChange={(e)=> setShipping(e.target.value)
+                }>
+                    
+                    <option
+                    id="shipping"
+                    value="ireland"
+                    >
+                       within Ireland
+                    </option>
+                    <option
+                    id="shipping"
+                    value="international"
+                    >
+                       International
+                    </option>
+                </select>
             </div>
             <div>
                 <label></label>

@@ -71,6 +71,7 @@ const checkoutHandler = () => {
                               </div>
                               <div>
                                   <button 
+                                  className="primary"
                                   type="button" 
                                   onClick={() => removeFromCartHandler(item.product)}>
                                       Delete

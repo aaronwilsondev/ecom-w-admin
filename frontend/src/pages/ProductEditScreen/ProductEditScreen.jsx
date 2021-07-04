@@ -10,6 +10,8 @@ export default function ProductEditScreen(props) {
     const productId = props.match.params.id;
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
+    const [taxPrice, setTaxPrice] = useState('');
+    const [shippingPrice, setShippingPrice] = useState('');
     const [image, setImage] = useState('');
     const [category, setCategory] = useState('');
     const [size, setSize] = useState('');
@@ -40,6 +42,8 @@ export default function ProductEditScreen(props) {
         } else {
             setName(product.name);
             setPrice(product.price);
+            setTaxPrice(product.taxPrice);
+            setShippingPrice(product.shippingPrice);
             setImage(product.image);
             setCategory(product.category);
             setCountInStock(product.countInStock);
@@ -54,6 +58,8 @@ export default function ProductEditScreen(props) {
             _id: productId,
             name,
             price,
+            taxPrice,
+            shippingPrice,
             image,
             category,
             size,
@@ -124,6 +130,26 @@ export default function ProductEditScreen(props) {
                       placeholder="Enter price"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
+                      ></input>
+                  </div>
+                  <div>
+                      <label htmlFor="price">Shipping Price</label>
+                      <input 
+                      id="price" 
+                      type="text"
+                      placeholder="Enter Shipping price"
+                      value={shippingPrice}
+                      onChange={(e) => setShippingPrice(e.target.value)}
+                      ></input>
+                  </div>
+                  <div>
+                      <label htmlFor="price">Tax Price</label>
+                      <input 
+                      id="price" 
+                      type="text"
+                      placeholder="Enter Tax price"
+                      value={taxPrice}
+                      onChange={(e) => setTaxPrice(e.target.value)}
                       ></input>
                   </div>
                   <div>

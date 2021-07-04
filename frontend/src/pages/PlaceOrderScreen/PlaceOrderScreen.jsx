@@ -17,12 +17,24 @@ if(!cart.paymentMethod) {
 const orderCreate = useSelector((state) => state.orderCreate);
 const { loading, success, error, order } = orderCreate;
 
+
+
 const toPrice = (num) => Number(num.toFixed(2));
 cart.itemsPrice = toPrice(cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0));
-cart.shippingPrice = cart.itemsPrice > 100? toPrice(0) : toPrice(10);
-cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
-cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
-  
+// cart.shippingPrice = cart.itemsPrice > 100? toPrice(0) : toPrice(10);
+// cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
+cart.taxPrice = toPrice(cart.cartItems.reduce((a, c) => a + c.qty * c.taxPrice, 0));
+cart.shippingPrice = toPrice(cart.cartItems.reduce((a, c) => a + c.qty * c.shippingPrice, 0));
+if(cart.shippingAddress.shipping === "ireland") {
+  cart.totalPrice = cart.itemsPrice  + cart.taxPrice + cart.shippingPrice;
+} else {
+  cart.totalPrice = cart.itemsPrice  + cart.taxPrice;
+}
+
+
+
+
+
 const dispatch = useDispatch();
 
 const placeOrderHandler = () => {
@@ -37,7 +49,9 @@ useEffect(() => {
       type: ORDER_CREATE_RESET
     });
   }
-}, [dispatch, order, props.history, success]);
+  console.log(cart.shippingAddress);
+  
+}, [dispatch, order, props.history, success, cart.shippingAddress]);
 
 return (
         <div className="screen">
@@ -96,19 +110,29 @@ return (
                       </li>
                       <li>
                           <div className="row">
-                            <div>Items</div>
+                            <div><strong>Items:</strong></div>
                             <div>€{cart.itemsPrice.toFixed(2)}</div>
                           </div>
                       </li>
                       <li>
                           <div className="row">
-                            <div>Shipping</div>
-                            <div>€{cart.shippingPrice.toFixed(2)}</div>
+                            <div><strong>Shipping:</strong></div>
+                            {
+                              cart.shippingAddress.shipping === "ireland" ? (
+                                <div>€{cart.shippingPrice}</div>
+                              )
+                              :
+                              (
+                                <div>
+                                  due to the varying sizes, all international deliverys will be contacted to arrange shipping
+                                </div>
+                              )
+                            }  
                           </div>
                       </li>
                       <li>
                           <div className="row">
-                            <div>Tax</div>
+                            <div><strong>Tax:</strong></div>
                             <div>€{cart.taxPrice.toFixed(2)}</div>
                           </div>
                       </li>
@@ -116,7 +140,7 @@ return (
                           <div className="row">
                             <div>
                              <strong>
-                             Order Total
+                             Order Total:
                              </strong>
                             </div>
                             <div>

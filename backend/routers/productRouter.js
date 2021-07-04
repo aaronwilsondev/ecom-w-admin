@@ -70,6 +70,8 @@ productRouter.post(
         name: 'sample name' + Date.now(),
         image: "/images/p1.jpg",
         price: 0,
+        taxPrice: 0,
+        shippingPrice: 0,
         category: "sample Category",
         size: "sample Size",
         countInStock: 0,
@@ -88,6 +90,8 @@ productRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async(req, res) =
     if(product) {
         product.name = req.body.name;
         product.price = req.body.price;
+        product.shippingPrice = req.body.shippingPrice;
+        product.taxPrice = req.body.taxPrice;
         product.image = req.body.image;
         product.category = req.body.category;
         product.size = req.body.size;
