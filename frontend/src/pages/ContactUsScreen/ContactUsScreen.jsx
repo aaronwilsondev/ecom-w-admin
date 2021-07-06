@@ -16,7 +16,7 @@ export default function ContactUsScreen(props) {
             <div className="form-container-contact">
             <form 
             className="form"
-            action="https://formsubmit.co/aaronwilson1234@outlook.ie" 
+            action="https://formsubmit.co/cd30298bee4f8f1383ae4dabbc2e6029" 
             method="POST"
             // onSubmit={submitHandler}
             >
