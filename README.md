@@ -31,7 +31,7 @@ both options to create and delete items through the site are available.
 ## Edit Product Page
 
 Edit products page with multiple editable attributes for each item including image upload.
-all images are uploaded to an AWS s3 database for storage, the image input gets filled with aws path once item is selcted for upload.
+all images are uploaded to an AWS s3 database for storage, the image input gets filled with aws path once item is selected for upload.
 
 <img src="MDImages/productedit1.jpg" width="600">
 <img src="MDImages/productedit2.jpg" width="600">
