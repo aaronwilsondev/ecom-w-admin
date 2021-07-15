@@ -22,7 +22,7 @@ A M.E.R.N Stack Ecommerce Project for an Artist Gallery with admin side login fo
 
 ## Products Page
 
-<img src"MDImages/productspage.jpg" width="400">
+<img src="MDImages/productspage.jpg" width="400">
 
 
 
