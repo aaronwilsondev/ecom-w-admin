@@ -25,7 +25,24 @@ A M.E.R.N Stack Ecommerce Project for an Artist Gallery with admin side login fo
 <img src="MDImages/productspage.jpg" width="600">
 
 
+## Edit Product Page
+
+<img src="MDImages/productedit1.jpg" width="600">
+<img src="MDImages/productedit2.jpg" width="600">
 
 
+## Orders Page
 
-<img src="MDImages/dahsboardpage1.jpg" width="100">
+<img src="MDImages/orderspage.jpg" width="600">
+
+
+## Dashboard
+
+<img src="MDImages/dahsboardpage1.jpg" width="600">
+<img src="MDImages/dashboardpage2.jpg" width="600">
+
+
+## Users Page
+
+<img src="MDImages/userspage.jpg" width="600">
+
