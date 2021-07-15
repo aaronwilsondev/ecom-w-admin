@@ -17,3 +17,5 @@ A M.E.R.N Stack Ecommerce Project for an Artist Gallery with admin side login fo
 - Heroku for deployment
 - Redux store for handling state within the project
 - Node & Express for Web API, File Upload, JWT
+
+<img src="MDImages/dahsboardpage1.jpg" width="100">
