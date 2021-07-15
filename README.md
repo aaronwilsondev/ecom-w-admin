@@ -18,4 +18,14 @@ A M.E.R.N Stack Ecommerce Project for an Artist Gallery with admin side login fo
 - Redux store for handling state within the project
 - Node & Express for Web API, File Upload, JWT
 
+# Admin Side
+
+## Products Page
+
+<img src"MDImages/productspage.jpg" width="400">
+
+
+
+
+
 <img src="MDImages/dahsboardpage1.jpg" width="100">
