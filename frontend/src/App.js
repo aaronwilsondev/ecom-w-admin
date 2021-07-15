@@ -321,7 +321,7 @@ function App() {
            <Link to="" className="f-icon">
              <i className="fa-2x social-icon fab fa-instagram"></i>
            </Link>
-           <Link to="" className="f-icon">
+           <Link to="/contact" className="f-icon">
              <i className="fa-2x social-icon fas fa-envelope"></i>
            </Link>
          </div>

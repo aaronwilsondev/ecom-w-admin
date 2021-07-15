@@ -119,7 +119,7 @@ orderRouter.put('/:id/pay', isAuth, expressAsyncHandler(async(req, res) => {
           mailgun()
           .messages()
           .send({
-            from: 'MC <postmaster@emsiart.com>',
+            from: 'MC <customerservice@emsiart.com>',
             to: `${order.user.name} <${order.user.email}>`,
             subject: `New Order ${order._id}`,
             html: payOrderEmailTemplate(order),
