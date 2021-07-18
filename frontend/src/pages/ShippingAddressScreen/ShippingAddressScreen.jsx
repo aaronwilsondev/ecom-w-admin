@@ -24,9 +24,20 @@ const [ email, setEmail ] = useState(shippingAddress.email);
 const dispatch = useDispatch();
 
 const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(saveShippingAddress({fullName, address, city, postalCode, country, shipping, email}));
-    props.history.push('/placeorder');
+    if(shipping === "ireland"){
+        e.preventDefault();
+        dispatch(saveShippingAddress({fullName, address, city, postalCode, country, shipping, email}));
+        props.history.push('/placeorder');
+      
+    } else if (shipping === "international"){
+        e.preventDefault();
+        dispatch(saveShippingAddress({fullName, address, city, postalCode, country, shipping, email}));
+        props.history.push('/placeorder');
+       
+    } else {
+        alert("please specify shipping");
+    }
+    
 }
 
     return (
@@ -106,12 +117,17 @@ const submitHandler = (e) => {
                 ></input>
             </div>
             <div>
-            <label html="shipping">Shipping</label>
+            <label html="shipping">Enter Shipping</label>
                 <select 
                 value={shipping} 
                 onChange={(e)=> setShipping(e.target.value)
                 }>
-                    
+                    <option
+                    id="shipping"
+                    selected="selected"
+                    >
+                      -- Please Enter Shipping --
+                    </option>
                     <option
                     id="shipping"
                     value="ireland"

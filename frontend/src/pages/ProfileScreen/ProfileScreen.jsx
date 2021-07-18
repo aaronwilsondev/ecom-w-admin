@@ -84,7 +84,7 @@ const submitHandler = (e) =>{
                         type="text"
                         placeholder="Enter Email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value.toLowerCase())}
                         >                          
                         </input>
                     </div>

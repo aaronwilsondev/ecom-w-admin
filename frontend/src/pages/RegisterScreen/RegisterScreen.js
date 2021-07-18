@@ -68,7 +68,7 @@ useEffect(() => {
                      id="email" 
                      placeholder="Enter email" 
                      required
-                     onChange={ e => setEmail(e.target.value) }
+                     onChange={ e => setEmail(e.target.value.toLowerCase()) }
                      ></input>
                  </div> 
                  <div>
